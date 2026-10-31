@@ -2,9 +2,14 @@ import '../../core/model/key_model.dart';
 import '../../core/strings/letters_init.dart';
 import '../key_generation/extract_key.dart';
 import '../key_generation/generate_key.dart';
+import 'text_encryption.dart';
 
+/// Decrypts cipher text produced by [TextEncryption.textEncryption].
 class TextDecryption {
-  /// Decryption [cipherText] and extract key from it .
+  /// Decrypts [cipherText] and returns the original plain text.
+  ///
+  /// The key is read from inside [cipherText] itself, so nothing else is
+  /// needed.
   static String textDecryption(String cipherText) {
     // Setup letter to encryption and decryption
     LettersInit.instance.setupLetters();
@@ -58,7 +63,7 @@ class TextDecryption {
     return convertCipherToIntList;
   }
 
-  /// Decryption Cipher Text List<Int>
+  /// Decryption Cipher Text `List<int>`
   static List<int> _convertCipherListIntToPlainListInt(
       List<int> cipherInts, String key, int length) {
     KeyModel keyModel = GenerateKey.getFullKey(key);
@@ -71,7 +76,7 @@ class TextDecryption {
     return plainInts;
   }
 
-  /// Convert Plain List<int> to readable String
+  /// Converts a list of plain letter values back into readable text.
   static String convertPlainIntToString(List<int> plainInts) {
     List<String> plainStrings = [];
     for (int i in plainInts) {

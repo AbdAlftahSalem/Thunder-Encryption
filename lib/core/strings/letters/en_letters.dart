@@ -1,11 +1,14 @@
+/// English letters (small and capital) and their numeric values.
 class EnLetters {
-  // create singleton for ConstStrings
+  /// The shared instance.
   static final EnLetters instance = EnLetters._internal();
 
+  /// Returns the shared [instance].
   factory EnLetters() => instance;
 
   EnLetters._internal();
 
+  /// Value for each small letter (a–z).
   Map<String, int> enSmallLettersStringKey = {
     "a": 0,
     "b": 1,
@@ -34,6 +37,8 @@ class EnLetters {
     "y": 24,
     "z": 25,
   };
+
+  /// Value for each capital letter (A–Z).
   Map<String, int> enCapitalLettersStringKey = {
     "A": 26,
     "B": 27,
@@ -63,6 +68,7 @@ class EnLetters {
     "Z": 51,
   };
 
+  /// Small letter for each value.
   Map<int, String> enSmallLettersIntKey = {
     0: "a",
     1: "b",
@@ -91,6 +97,8 @@ class EnLetters {
     24: "y",
     25: "z",
   };
+
+  /// Capital letter for each value.
   Map<int, String> enCapitalLettersIntKey = {
     26: "A",
     27: "B",

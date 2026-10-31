@@ -1,15 +1,6 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// Kept so existing `package:thunder_encryption/encryption.dart` imports keep
+/// working. New code should import
+/// `package:thunder_encryption/thunder_encryption.dart`.
 library;
 
-export 'core/strings/letters/en_letters.dart';
-export 'core/model/key_model.dart';
-export 'core/model/letters_key_model.dart';
-export 'feature/key_generation/extract_key.dart';
-export 'feature/key_generation/generate_key.dart';
-export 'feature/text_encryption_decryption/text_decryption.dart';
-export 'feature/text_encryption_decryption/text_encryption.dart';
-export 'main.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'thunder_encryption.dart';

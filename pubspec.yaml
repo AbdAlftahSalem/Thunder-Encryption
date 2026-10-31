@@ -1,15 +1,19 @@
 name: thunder_encryption
-description: A library for encryption utilities in Dart.
-version: 1.0.0
-repository: https://github.com/AbdAlftahSalem/encryption
+description: >-
+  Lightweight text encryption and decryption for Dart and Flutter. Supports
+  English, Arabic, digits and symbols, with a fresh random key hidden in every cipher.
+version: 1.1.0
+repository: https://github.com/AbdAlftahSalem/Thunder-Encryption
+issue_tracker: https://github.com/AbdAlftahSalem/Thunder-Encryption/issues
+topics:
+  - encryption
+  - cipher
+  - arabic
+  - text
 
 environment:
   sdk: ^3.6.0
 
-dependencies:
-#  path:
-# Add your dependencies here if needed, e.g., path: ^1.8.0.
-
 dev_dependencies:
-  lints: 5.1.0
+  lints: ^6.0.0
   test: ^1.24.0

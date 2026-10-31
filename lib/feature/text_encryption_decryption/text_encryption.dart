@@ -4,9 +4,18 @@ import '../../core/model/key_model.dart';
 import '../../core/model/letters_key_model.dart';
 import '../../core/strings/letters_init.dart';
 import '../key_generation/generate_key.dart';
+import 'text_decryption.dart';
 
+/// Encrypts plain text into cipher text.
 class TextEncryption {
-  /// Encryption [plainText] and generate random key
+  /// Encrypts [plainText] with a new random key and returns the cipher text.
+  ///
+  /// The key is hidden inside the returned cipher text, so
+  /// [TextDecryption.textDecryption] needs nothing else to decrypt it.
+  ///
+  /// Supported characters are English and Arabic letters, digits, the space
+  /// and a set of symbols. Any other character (for example `,` or a line
+  /// break) throws an [ArgumentError].
   static String textEncryption(String plainText) {
     // Setup letter to encryption and decryption
     LettersInit.instance.setupLetters();
@@ -49,13 +58,24 @@ class TextEncryption {
     List<String> splitPlainText = plain.split('');
     List<int> convertPlainToIntList = [];
     for (String i in splitPlainText) {
-      int intValueForLetter = LettersInit.instance.lettersWithStringKey[i] ?? 0;
+      int? intValueForLetter = LettersInit.instance.lettersWithStringKey[i];
+      if (intValueForLetter == null) {
+        // Before 1.1.0 unknown characters were silently encrypted as "a",
+        // so the decrypted text did not match the original.
+        throw ArgumentError.value(
+          plain,
+          'plainText',
+          'Unsupported character "$i" (code ${i.runes.map((r) => 'U+${r.toRadixString(16).toUpperCase().padLeft(4, '0')}').join(' ')}). '
+              'Supported: English and Arabic letters, digits, space and these symbols: '
+              '${LettersInit.instance.supportedSymbols}',
+        );
+      }
       convertPlainToIntList.add(intValueForLetter);
     }
     return convertPlainToIntList;
   }
 
-  /// Encrypt list<int>
+  /// Encrypt `List<int>`
   /// Equation for encryption : c = ( p + k ) %  n
   static List<int> _encryptListInt(List<int> plainInt, int key) {
     List<int> encryptedInts = [];
@@ -67,7 +87,7 @@ class TextEncryption {
     return encryptedInts;
   }
 
-  ///  Convert list<int> encrypted int to cipher text [ return String ]
+  ///  Convert `List<int>` encrypted int to cipher text [ return String ]
   static String _convertEncryptedIntToEncryptedString(List<int> encryptedInts) {
     List<String> encryptedStrings = [];
     for (var encryptedInt in encryptedInts) {
@@ -80,7 +100,7 @@ class TextEncryption {
   }
 
   /// Hide Key in cipher text
-  static _addKeyToCipheredText(
+  static String _addKeyToCipheredText(
       String cipherText, LettersKeyModel lettersKeyModel) {
     String newCipherText = '';
     if (cipherText.length > 4) {
