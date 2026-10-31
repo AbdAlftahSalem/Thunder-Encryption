@@ -1,12 +1,15 @@
+/// Arabic letters and their numeric values.
 class ArLetters {
-  // create singleton for ConstStrings
+  /// The shared instance.
   static final ArLetters instance = ArLetters._internal();
 
+  /// Returns the shared [instance].
   factory ArLetters() => instance;
 
   ArLetters._internal();
 
-  Map<String, int>  arLettersStringKey = {
+  /// Value for each Arabic letter.
+  Map<String, int> arLettersStringKey = {
     "أ": 77,
     "ا": 78,
     "ب": 79,
@@ -44,6 +47,7 @@ class ArLetters {
     "ء": 111,
   };
 
+  /// Arabic letter for each value.
   Map<int, String> arLettersIntKey = {
     77: "أ",
     78: "ا",

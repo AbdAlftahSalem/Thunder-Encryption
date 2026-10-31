@@ -1,5 +1,6 @@
+/// Reads the hidden key out of a cipher text.
 class ExtractKey {
-  /// Get Key from [cipherText]
+  /// Returns the six key letters hidden in [cipherText].
   static String extractKey(String cipherText) {
     String fullKey = "";
 
@@ -11,7 +12,8 @@ class ExtractKey {
     return fullKey;
   }
 
-  static extractCipherWithoutKey(String cipherText) {
+  /// Returns [cipherText] with the hidden key letters removed.
+  static String extractCipherWithoutKey(String cipherText) {
     String newCipherText = "";
     if ((cipherText.length - 6) > 4) {
       // Get first 2 digits
@@ -26,7 +28,6 @@ class ExtractKey {
       int endIndex = (newCipherText.length ~/ 2) + 1;
 
       newCipherText = newCipherText.substring(0, startIndex) +
-          "" +
           newCipherText.substring(endIndex);
 
       return newCipherText;

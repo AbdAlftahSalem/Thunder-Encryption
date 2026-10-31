@@ -10,8 +10,9 @@ import '../../core/strings/letters_init.dart';
 3- If plain text more than 5 letter ( Key generate using 6 letters ) . equation => Key = ( n1 + n2 ) + ( n3 / n4 ) + ( n5 * n6 )
 */
 
+/// Generates random keys and rebuilds a key from its letters.
 class GenerateKey {
-  //. Generate a random key with 6 digits of letters
+  /// Generates a new random key made of six letters of the alphabet.
   static KeyModel generateNewKey() {
     // generate random 6 number start from 1 and end in length of letters
     LettersKeyModel lettersKey = _generateLetterKeyModel();
@@ -63,7 +64,7 @@ class GenerateKey {
     return lettersKey;
   }
 
-  /// get Full Key model by know [key] as string
+  /// Rebuilds the [KeyModel] from the six key letters read from a cipher.
   static KeyModel getFullKey(String key) {
     List<String> keySplit = key.split("");
 

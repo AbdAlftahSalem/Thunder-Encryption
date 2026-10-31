@@ -1,11 +1,14 @@
+/// Supported symbols (including the space) and their numeric values.
 class Symbols {
-  // create singleton for ConstStrings
+  /// The shared instance.
   static final Symbols instance = Symbols._internal();
 
+  /// Returns the shared [instance].
   factory Symbols() => instance;
 
   Symbols._internal();
 
+  /// Value for each symbol.
   Map<String, int> symbolsWithStringKey = {
     " ": 52,
     "/": 53,
@@ -33,6 +36,8 @@ class Symbols {
     "'": 75,
     '"': 76,
   };
+
+  /// Symbol for each value.
   Map<int, String> symbolsWithIntKey = {
     52: " ",
     53: "/",
@@ -55,7 +60,7 @@ class Symbols {
     70: "<",
     71: "}",
     72: "{",
-    73 :":",
+    73: ":",
     74: ";",
     75: "'",
     76: '"',

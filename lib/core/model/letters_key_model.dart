@@ -1,7 +1,14 @@
+/// The six random letters a key is built from, with their numeric values.
+///
+/// `n1`…`n6` are the values and `l1`…`l6` the matching letters.
 class LettersKeyModel {
+  /// Numeric values of the six key letters.
   int n1, n2, n3, n4, n5, n6;
+
+  /// The six key letters, hidden inside the cipher text.
   String l1, l2, l3, l4, l5, l6;
 
+  /// Creates a letters key model.
   LettersKeyModel({
     required this.n1,
     required this.n2,

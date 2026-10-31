@@ -1,11 +1,14 @@
+/// Digits (0–9) and their numeric values.
 class Numbers {
-  // create singleton for ConstStrings
+  /// The shared instance.
   static final Numbers instance = Numbers._internal();
 
+  /// Returns the shared [instance].
   factory Numbers() => instance;
 
   Numbers._internal();
 
+  /// Value for each digit.
   Map<String, int> symbolsWithStringKey = {
     "0": 112,
     "1": 113,
@@ -19,6 +22,7 @@ class Numbers {
     "9": 121,
   };
 
+  /// Digit for each value.
   Map<int, String> symbolsWithIntKey = {
     112: "0",
     113: "1",
